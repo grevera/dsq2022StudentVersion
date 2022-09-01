@@ -1,0 +1,35 @@
+<p> Dou Shou Qi V6 <br/>
+    Note: This is an individual (not a team) assignment. </p>
+
+<p> Make a backup copy of your work so far before you begin this assignment. Complete the todo's for
+    v6 (version 6) of the game in Board.java. </p>
+
+<p> This assignment begins to tie together all of your hard work so far and relies heavily on the
+    existing functionality. Our goal is to do some basic game AI. To accomplish that, we need to
+    generate a list of all possible moves from the current configuration. In the future, we will
+    develop a way to pick and choose from the list but for now, all we need is a complete list. To
+    accomplish this, complete the suggest function in Board.java. </p>
+
+<p> Your solution may be as elegant or as "brute force" as you wish. You should use your existing
+    functions as much as possible (however, you are not required to do so). Your copy ctor will
+    definitely be useful! You can also use your toString to print out the elements of your list (to
+    check your work). I used doMove in my solution a great deal as well. Your list should only
+    contain "legal" moves for the current player's turn. </p>
+
+<p> You might be wondering how we might use this in an actual game. One way is to give the user a
+    "hint" or "cheat" option. The user can ask the computer to show a list of all of the possible
+    moves starting with the current board. Then the user can pick one of those moves. Another option
+    is for the computer to be an adversary. When it is the computer's turn, the computer generates a
+    list of possible moves and then picks one at random. Of course, that is not a very good
+    adversary. In the future, we will explore how to evaluate the elements of the list and choose
+    the best. </p>
+
+<p> You may also be wondering how I can test/evaluate your results. I generate a list of all
+    possible moves from a starting board position. You do as well. Now I need a method to compare
+    your list with mine. One way to do that is to use the <a
+            href="https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient">Sorensen-Dice
+        coefficient.</p>
+
+<p> Deliverables: Submit your work (Board.java) via Canvas. </p>
+
+<p> Copyright &copy; George J. Grevera, 2010. All rights reserved. </p>
