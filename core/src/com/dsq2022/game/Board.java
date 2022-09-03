@@ -50,11 +50,11 @@ public class Board implements Serializable {
      */
     public Board ( ) {
         //init the underlying Board base
-        //this.base[0][0] = Base.cGround;
+        this.base[0][0] = Base.cGround;
         // ...
 
         //place the pieces
-        //this.pieces[0][0] = Piece.rLion;
+        this.piece[0][0] = Piece.rLion;
         // ...
     }
     //-----------------------------------------------------------------------
