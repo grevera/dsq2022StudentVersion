@@ -41,7 +41,7 @@ public enum Piece {
 
     public final GameColor color;
     /** This ctor is never used directly. */
-    Piece ( GameColor c ) {
+    private Piece ( GameColor c ) {
         this.color = c;
     }
 }
