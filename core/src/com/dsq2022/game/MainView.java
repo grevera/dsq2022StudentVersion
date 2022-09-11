@@ -53,23 +53,27 @@ public class MainView {
         //load the images for the (moveable) board pieces
         piece[ Piece.rbNone.ordinal()    ] = null;
 
-        piece[ Piece.rRat.ordinal()      ] = new Texture( "graphics/rRat.png"      );
-        piece[ Piece.rCat.ordinal()      ] = new Texture( "graphics/rCat.png"      );
-        piece[ Piece.rDog.ordinal()      ] = new Texture( "graphics/rDog.png"      );
-        piece[ Piece.rWolf.ordinal()     ] = new Texture( "graphics/rWolf.png"     );
-        piece[ Piece.rLeopard.ordinal()  ] = new Texture( "graphics/rLeopard.png"  );
-        piece[ Piece.rTiger.ordinal()    ] = new Texture( "graphics/rTiger.png"    );
-        piece[ Piece.rLion.ordinal()     ] = new Texture( "graphics/rLion.png"     );
-        piece[ Piece.rElephant.ordinal() ] = new Texture( "graphics/rElephant.png" );
+        try {
+            piece[Piece.rRat.ordinal()] = new Texture( "graphics/rRat.png" );
+            piece[Piece.rCat.ordinal()] = new Texture( "graphics/rCat.png" );
+            piece[Piece.rDog.ordinal()] = new Texture( "graphics/rDog.png" );
+            piece[Piece.rWolf.ordinal()] = new Texture( "graphics/rWolf.png" );
+            piece[Piece.rLeopard.ordinal()] = new Texture( "graphics/rLeopard.png" );
+            piece[Piece.rTiger.ordinal()] = new Texture( "graphics/rTiger.png" );
+            piece[Piece.rLion.ordinal()] = new Texture( "graphics/rLion.png" );
+            piece[Piece.rElephant.ordinal()] = new Texture( "graphics/rElephant.png" );
 
-        piece[ Piece.bRat.ordinal()      ] = new Texture( "graphics/bRat.png"      );
-        piece[ Piece.bCat.ordinal()      ] = new Texture( "graphics/bCat.png"      );
-        piece[ Piece.bDog.ordinal()      ] = new Texture( "graphics/bDog.png"      );
-        piece[ Piece.bWolf.ordinal()     ] = new Texture( "graphics/bWolf.png"     );
-        piece[ Piece.bLeopard.ordinal()  ] = new Texture( "graphics/bLeopard.png"  );
-        piece[ Piece.bTiger.ordinal()    ] = new Texture( "graphics/bTiger.png"    );
-        piece[ Piece.bLion.ordinal()     ] = new Texture( "graphics/bLion.png"     );
-        piece[ Piece.bElephant.ordinal() ] = new Texture( "graphics/bElephant.png" );
+            piece[Piece.bRat.ordinal()] = new Texture( "graphics/bRat.png" );
+            piece[Piece.bCat.ordinal()] = new Texture( "graphics/bCat.png" );
+            piece[Piece.bDog.ordinal()] = new Texture( "graphics/bDog.png" );
+            piece[Piece.bWolf.ordinal()] = new Texture( "graphics/bWolf.png" );
+            piece[Piece.bLeopard.ordinal()] = new Texture( "graphics/bLeopard.png" );
+            piece[Piece.bTiger.ordinal()] = new Texture( "graphics/bTiger.png" );
+            piece[Piece.bLion.ordinal()] = new Texture( "graphics/bLion.png" );
+            piece[Piece.bElephant.ordinal()] = new Texture( "graphics/bElephant.png" );
+        } catch (Exception e) {
+            System.out.println( "Error: " + e.getMessage() );
+        }
 
         for (Texture t : piece) {
             if (t != null)

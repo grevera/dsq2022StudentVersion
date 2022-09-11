@@ -13,6 +13,9 @@ public class DesktopLauncher {
 		config.setForegroundFPS( 60 );
 		config.setTitle( "Dou Shou Qi Game" );
 		config.setWindowedMode( 600, 800 );
+
+		System.out.println( "user.dir=" + System.getProperty("user.dir") );
+
 		new Lwjgl3Application( new DSQ2022Game(), config );
 	}
 }
