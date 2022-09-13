@@ -1,7 +1,6 @@
 package com.dsq2022.game;
 /**
  * Define constants for the board itself.
- *
  * These never move as they are part of the board.
  *
  * Copyright © George J. Grevera, 2016. All rights reserved.

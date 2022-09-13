@@ -29,19 +29,21 @@ public class DSQ2022Game extends Game {
 		this.b = new Board();
 		//load preferences (including previous game in progress), if any
 		// https://libgdx.com/wiki/preferences
-		Preferences prefs = Gdx.app.getPreferences( "dsq2022.prefs" );
-		//load board
-		String boardString = prefs.getString( "board", null );
-		System.out.println( "load board: " + boardString );
-		if (boardString != null) {
-			Json json = new Json();
-			this.b = json.fromJson( Board.class, boardString );
-			System.out.println( this.b );
-			System.out.println( json.prettyPrint(b) );
+		if (false) {  //disable for v1
+			Preferences prefs = Gdx.app.getPreferences( "dsq2022.prefs" );
+			//load board
+			String boardString = prefs.getString( "board", null );
+			System.out.println( "load board: " + boardString );
+			if (boardString != null) {
+				Json json = new Json();
+				this.b = json.fromJson( Board.class, boardString );
+				System.out.println( this.b );
+				System.out.println( json.prettyPrint( b ) );
+			}
+			this.soundOn = prefs.getBoolean( "soundOn", true );
+			this.nameOn = prefs.getBoolean( "namesOn", true );
+			this.rankOn = prefs.getBoolean( "rankOn", true );
 		}
-		this.soundOn = prefs.getBoolean( "soundOn", true );
-		this.nameOn  = prefs.getBoolean( "namesOn", true );
-		this.rankOn  = prefs.getBoolean( "rankOn",  true );
 	}
 	//-----------------------------------------------------------------------
 	@Override public void dispose ( ) {
