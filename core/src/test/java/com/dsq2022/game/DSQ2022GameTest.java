@@ -8,23 +8,17 @@ import org.junit.Test;
 
 public class DSQ2022GameTest {
 
-    @Before
-    public void setUp () throws Exception {
+    @Before public void setUp ( ) throws Exception {
     }
 
-    @After
-    public void tearDown () throws Exception {
+    @After public void tearDown ( ) throws Exception {
     }
 
-    @Test
-    public void create () {
+    @Test public void test1 ( ) {
+        Board b = new Board();
+        System.out.println( "board: \n" + b );
     }
 
-    @Test
-    public void render () {
-    }
-
-    @Test
-    public void dispose () {
+    @Test public void test2 ( ) {
     }
 }
