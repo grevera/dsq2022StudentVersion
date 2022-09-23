@@ -36,6 +36,7 @@ public class PrefController extends ScreenAdapter {
      *                  checkbox
      *                  checkbox
      *                  checkbox
+     *                  checkbox
      *                  button | button
      *  </pre>
      */
@@ -78,7 +79,7 @@ public class PrefController extends ScreenAdapter {
         soundOnCB.padLeft( 50 );
         soundOnCB.setChecked( this.game.soundOn );
 
-        final CheckBox nameOnCB = new CheckBox( "name on",  skin );
+        final CheckBox nameOnCB = new CheckBox( "name on", skin );
         nameOnCB.addListener( new ChangeListener ( ) {
             @Override public void changed ( ChangeEvent event, Actor actor ) {
                 game.nameOn = nameOnCB.isChecked();
@@ -88,7 +89,7 @@ public class PrefController extends ScreenAdapter {
         nameOnCB.padLeft( 50 );
         nameOnCB.setChecked( this.game.nameOn );
 
-        final CheckBox rankOnCB = new CheckBox( "rank on",  skin );
+        final CheckBox rankOnCB = new CheckBox( "rank on", skin );
         rankOnCB.addListener( new ChangeListener ( ) {
             @Override public void changed ( ChangeEvent event, Actor actor ) {
                 game.rankOn = rankOnCB.isChecked();
@@ -97,6 +98,16 @@ public class PrefController extends ScreenAdapter {
         rankOnCB.align( Align.left );
         rankOnCB.padLeft( 50 );
         rankOnCB.setChecked( this.game.rankOn );
+
+        final CheckBox loadPreviousOnCB = new CheckBox( "load previous game on",  skin );
+        loadPreviousOnCB.addListener( new ChangeListener ( ) {
+            @Override public void changed ( ChangeEvent event, Actor actor ) {
+                game.loadPreviousOn = rankOnCB.isChecked();
+            }
+        });
+        loadPreviousOnCB.align( Align.left );
+        loadPreviousOnCB.padLeft( 50 );
+        loadPreviousOnCB.setChecked( this.game.loadPreviousOn );
 
         Table buttonTable = new Table( skin );
 
@@ -135,6 +146,9 @@ public class PrefController extends ScreenAdapter {
 
         table.row().expandX().fillX().pad( 10 );
         table.add( rankOnCB ).expandX().fillX();
+
+        table.row().expandX().fillX().pad( 10 );
+        table.add( loadPreviousOnCB ).expandX().fillX();
 
         table.row().expandX().fillX();
         table.add( buttonTable ).colspan( 3 );
