@@ -168,7 +168,7 @@ public class Board implements Serializable {
     //=======================================================================
     // v3 (version 3): isValidMove, doMove
     //-----------------------------------------------------------------------
-    /** Use these rules for game play (no variations except for the one noted
+    /** Use only these rules for game play (no variations except for the one noted
      *  below):
      *  http://veryspecial.us/free-downloads/AncientChess.com-DouShouQi.pdf
      *  This is the most challenging part of the assignment.
@@ -180,7 +180,7 @@ public class Board implements Serializable {
      *  known draw described in http://www.chessvariants.com/other.dir/shoudouqi2.html.
      *  </p>
      *  <p>
-     *  Clarification: do not allow moves/captures where the attacker "loses."
+     *  Clarification: Do not allow moves/captures where the attacker "loses."
      *  For example, do not allow the mouse to attack the lion and "lose"
      *  to the lion on purpose and be removed. </p>
      *  <p>
