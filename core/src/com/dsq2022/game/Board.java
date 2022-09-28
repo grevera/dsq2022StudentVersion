@@ -10,11 +10,12 @@ import java.util.ArrayList;
  * Board class (Model in M-V-C)
  *
  * rule book:
- *   use this initial setup.
+ *   Use this initial setup, rankings, and rules.
  *   http://veryspecial.us/free-downloads/AncientChess.com-DouShouQi.pdf
  *
  * video of game play & nice picture of initial game setup:
- *   use this (same as above) initial setup.
+ *   Use this (same as above) initial setup.
+ *   Do not use these rankings as they are different from above.
  *   http://ancientchess.com/page/play-doushouqi.htm
  *
  * play online:
