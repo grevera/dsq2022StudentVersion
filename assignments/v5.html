@@ -3,8 +3,29 @@
 
 <p> Make a backup copy of your work so far before you begin this assignment. </p>
 
-<p> Complete the todo's for v5 (version 5) of the game in Board.java. Don't forget to modify doMove
-    to call gameOver. You shouldn't be allowed to make moves after the game is over. </p>
+<p> Complete the todo's for hashCode() and gameOver() for v5 (version 5) of the
+    game in Board.java. Notes:
+    (a) Use the string algorithm from wikipedia. It is available in the
+    file, 'Java hashCode() - Wikipedia.pdf'.
+    (b) Simply treat the individual piece values (i.e., piece[r][c].ordinal())
+    as the individual character values. (DO NOT use charAt on the string
+    returned from toString for this function.)
+    (c) Also include the value of mBlacksTurn as described as the last (i.e.,
+    nth) value. Use the int value 1 for true and 2 for false.
+    (d) DO NOT include anything else (just the piece array contents and then bluesTurn).
+    It quickly becomes too complicated.
+    (e) Also, don't forget to modify doMove to call gameOver.
+    (That's because you shouldn't be allowed to make moves after the game is over!)
+</p>
+
+<p> (Not required.)
+    You might be wondering how you can test your hashCode function. Create
+    your own separate file with you own separate hashCode function. This
+    should take a string and return your calculated h.c. value (using charAt()
+    for each of the individual int string char values). Check if you calculate
+    the samme value as Java does for your string. Test it on a variety of
+    strings.
+</p>
 
 <p> Deliverables: Submit your work (Board.java) via Canvas. </p>
 

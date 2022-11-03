@@ -97,7 +97,7 @@ public class MainController extends ScreenAdapter implements InputProcessor {
 
         //bounds check
         if (r < 0 || c < 0)    return true;
-        if (r >= Board.fRows || c >= Board.fCols)    return true;
+        if (r >= this.game.b.fRows || c >= this.game.b.fCols)    return true;
 
         System.out.println( "touchUp: r=" + r + ", c=" + c );
         if (this.game.fromR == -1) {  //are we are waiting for a click on the first (from) piece?

@@ -26,22 +26,34 @@ import java.util.ArrayList;
  * Copyright © George J. Grevera, 2016. All rights reserved.
  */
 public class Board implements Serializable {
+    public static final String studentName = "< your name here >";
     private static final long serialVersionUID = 208041731299892L;
 
+    // constants for the default Board size
+    public static final int   dfRows = 9;  ///< default no. of Board rows
+    public static final int   dfCols = 7;  ///< default no. of Board cols
+
     // constants for the size of the Board
-    public static final int   fRows = 9;  ///< no. of Board rows
-    public static final int   fCols = 7;  ///< no. of Board cols
+    public final int   fRows;  ///< no. of Board rows
+    public final int   fCols;  ///< no. of Board cols
 
     /// the (underlying) playing surface/base. base[0][0] is the upper left corner.
-    public Base[][]  base = new Base[ fRows ][ fCols ];
+    public Base[][]  base;
 
-    /// the noveable pieces on the playing Board. piece[0][0] is the upper left corner.
-    public Piece[][] piece = new Piece[ fRows ][ fCols ];
+    /// the moveable pieces on the playing Board. piece[0][0] is the upper left corner.
+    public Piece[][] piece;
 
     public boolean  bluesTurn = true;  ///< by convention, blue goes first
     public boolean  moveWasCapture = false;  ///< last move resulted in a capture
     public static final boolean  universalTraps = true;  ///< all traps are universal (see below)
     //=======================================================================
+    public Board ( int rows, int cols ) {
+        this.fRows = rows;
+        this.fCols = cols;
+        this.base  = new Base[  rows ][ cols ];
+        this.piece = new Piece[ rows ][ cols ];
+    }
+
     /** Init the Board. The "Board" consists of the base which doesn't change
      *  and the pieces which move.
      *  By convention, red will initially be in the top half (0,0) of the
@@ -50,10 +62,12 @@ public class Board implements Serializable {
      *  @todo v1
      */
     public Board ( ) {
+        this( Board.dfRows, Board.dfCols );
+
+        // @todo v1
         //init the underlying Board base
         this.base[0][0] = Base.cGround;
         // ...
-
         //place the pieces
         this.piece[0][0] = Piece.rLion;
         // ...
@@ -253,7 +267,9 @@ public class Board implements Serializable {
      *  @todo v4
      */
     public Board ( final Board original ) {
-        super();
+        this( original.fRows, original.fCols );
+
+        // \todo v4
     }
     //-----------------------------------------------------------------------
     /** this is a "proper" equals method.
@@ -290,10 +306,11 @@ public class Board implements Serializable {
         return false;
     }
     //=======================================================================
-    // v5 (version 5): hashCode, gameOver (mention change to doMove to call
-    // gameOver)
+    // v5 (version 5): hashCode, gameOver.
+    // Also, don't forget to modify doMove to call gameOver.
+    // (That's because you shouldn't be allowed to make moves after the game is over!)
     //=======================================================================
-    /** this function deteremines if the game is over.
+    /** this function determines if the game is over.
      *  <pre> when is the game over? the game is over when:
      *      a. blue is a winner, or
      *      b. red is a winner,  or when
@@ -306,18 +323,30 @@ public class Board implements Serializable {
     }
     //-----------------------------------------------------------------------
     /** this function overrides the default hashCode function.
-     *  <p> from "Effective Java" by J. Bloch:
+     *  <p> From "Effective Java" by J. Bloch:
      *  "Item 9: Always override hashCode when you override equals" </p>
-     * 
-     *  <p> use the string algorithm from
-     *  https://en.wikipedia.org/wiki/Java_hashCode%28%29#The_java.lang.String_hash_function.
-     *  simply treat the individual piece values (i.e., piece[r][c].ordinal()) as the
-     *  individual character values. (DO NOT use charAt on the string returned
-     *  from toString for this function.) also include the value of mBlacksTurn
-     *  as described below as the last (i.e., nth) character. </p>
-     * 
-     *  <p> DO NOT include anything else (just the piece array contents and then bluesTurn).
-     *  It quickly becomes too complicated. </p>
+     *
+     <p> Complete the todo's for hashCode() and gameOver() for v5 (version 5) of the
+     game in Board.java. Notes:
+     (a) Use the string algorithm from wikipedia. It is available in the
+     file, 'Java hashCode() - Wikipedia.pdf'.
+     (b) Simply treat the individual piece values (i.e., piece[r][c].ordinal())
+     as the individual character values. (DO NOT use charAt on the string
+     returned from toString for this function.)
+     (c) Also include the value of mBlacksTurn as described as the last (i.e.,
+     nth) value. Use the int value 1 for true and 2 for false.
+     (d) DO NOT include anything else (just the piece array contents and then bluesTurn).
+     It quickly becomes too complicated.
+     </p>
+
+     <p> (Not required.)
+     You might be wondering how you can test your hashCode function. Create
+     your own separate file with you own separate hashCode function. This
+     should take a string and return your calculated h.c. value (using charAt()
+     for each of the individual int string char values). Check if you calculate
+     the samme value as Java does for your string. Test it on a variety of
+     strings.
+     </p>
      *
      *  @return the calculated hash code.
      *  @todo v5

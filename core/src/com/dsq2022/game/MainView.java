@@ -93,19 +93,19 @@ public class MainView {
         Gdx.graphics.setTitle( this.game.b.bluesTurn ? "Dou Shou Qi (blue's turn)"
                                                      : "Dou Shou Qi (red's turn)" );
         //System.out.println( "render" );
-        //double w = (Gdx.graphics.getWidth()  - in.left - in.right  - 1) / Board.fCols;
-        //double h = (Gdx.graphics.getHeight() - in.top  - in.bottom - 1) / Board.fRows;
+        //double w = (Gdx.graphics.getWidth()  - in.left - in.right  - 1) / this.game.b.fCols;
+        //double h = (Gdx.graphics.getHeight() - in.top  - in.bottom - 1) / this.game.b.fRows;
         int sw = Gdx.graphics.getWidth();
         int sh = Gdx.graphics.getHeight();
-        double w = Gdx.graphics.getWidth()  / Board.fCols;
-        double h = Gdx.graphics.getHeight() / Board.fRows;
+        double w = Gdx.graphics.getWidth()  / this.game.b.fCols;
+        double h = Gdx.graphics.getHeight() / this.game.b.fRows;
         this.size = (int)Math.min( h, w );  //updated cell size
 
         //calc offsets to center entire board in window
-        //this.xOff = ((int)(frameSize.getWidth()  - in.left - in.right  - 1) - Board.fCols*size) / 2;
-        //this.yOff = ((int)(frameSize.getHeight() - in.top  - in.bottom - 1) - Board.fRows*size) / 2;
-        this.xOff = (Gdx.graphics.getWidth()  - Board.fCols*size) / 2;
-        this.yOff = (Gdx.graphics.getHeight() - Board.fRows*size) / 2;
+        //this.xOff = ((int)(frameSize.getWidth()  - in.left - in.right  - 1) - this.game.b.fCols*size) / 2;
+        //this.yOff = ((int)(frameSize.getHeight() - in.top  - in.bottom - 1) - this.game.b.fRows*size) / 2;
+        this.xOff = (Gdx.graphics.getWidth()  - this.game.b.fCols*size) / 2;
+        this.yOff = (Gdx.graphics.getHeight() - this.game.b.fRows*size) / 2;
 
         //ScreenUtils.clear( 1, 0, 0, 1 );
         Gdx.gl.glClearColor( 0.25f, 0.25f, 0.26f, 1.0f );
@@ -141,8 +141,8 @@ public class MainView {
     //-----------------------------------------------------------------------
     private void drawSettings ( SpriteBatch g, int size, int xOff, int yOff ) {
         int r = -1;
-        int c = Board.fCols;
-        int tr = Board.fRows - r - 1;  //flip
+        int c = this.game.b.fCols;
+        int tr = this.game.b.fRows - r - 1;  //flip
         int x = c*size+xOff-size/4;
         int y = tr*size+yOff-size/4;
         g.draw( this.settings, x, y, size/5, size/5 );
@@ -161,8 +161,8 @@ public class MainView {
     }
     //-----------------------------------------------------------------------
     private void drawBoardSquares ( ShapeRenderer g, int size, int xOff, int yOff  ) {
-        for (int r=0; r<Board.fRows; r++) {
-            for (int c=0; c<Board.fCols; c++) {
+        for (int r=0; r<this.game.b.fRows; r++) {
+            for (int c=0; c<this.game.b.fCols; c++) {
                 Base v = this.game.b.getBase( r, c );
                 if (v == null)    continue;
                 switch (v) {
@@ -188,15 +188,15 @@ public class MainView {
                         g.setColor( Color.YELLOW );
                         break;
                 }
-                int tr = Board.fRows - r - 1;  //flip
+                int tr = this.game.b.fRows - r - 1;  //flip
                 g.rect( c*size + xOff, tr*size + yOff, size, size );
             }
         }
     }
     //-----------------------------------------------------------------------
     private void drawStrings ( SpriteBatch g, int size, int xOff, int yOff ) {
-        for (int r=0; r<Board.fRows; r++) {
-            for (int c=0; c<Board.fCols; c++) {
+        for (int r=0; r<this.game.b.fRows; r++) {
+            for (int c=0; c<this.game.b.fCols; c++) {
                 Piece v = this.game.b.getPiece( r, c );
                 if (v == null || v == Piece.rbNone) continue;
                 String p = v.toString();
@@ -205,7 +205,7 @@ public class MainView {
                 if (p.charAt( 0 ) == 'r')    g.setColor( Color.RED );
                 else                         g.setColor( Color.BLUE );
 
-                int tr = Board.fRows - r - 1;  //flip
+                int tr = this.game.b.fRows - r - 1;  //flip
                 int x = c * size + xOff;
                 int y = tr * size + yOff;
                 //center
@@ -229,22 +229,22 @@ public class MainView {
         Gdx.gl.glLineWidth( 2 );
         g.setColor( Color.DARK_GRAY );
         //horizontal lines
-        for (int r=0; r<=Board.fRows; r++) {
-            g.line( 0 + xOff, r*size + yOff, Board.fCols*size + xOff, r*size + yOff );
+        for (int r=0; r<=this.game.b.fRows; r++) {
+            g.line( 0 + xOff, r*size + yOff, this.game.b.fCols*size + xOff, r*size + yOff );
         }
         //vertical lines
-        for (int c=0; c<=Board.fCols; c++) {
-            g.line( c*size + xOff, 0 + yOff, c*size + xOff, Board.fRows*size + yOff );
+        for (int c=0; c<=this.game.b.fCols; c++) {
+            g.line( c*size + xOff, 0 + yOff, c*size + xOff, this.game.b.fRows*size + yOff );
         }
     }
     //-----------------------------------------------------------------------
     private void drawPieces ( SpriteBatch g, int size, int xOff, int yOff ) {
-        for (int r=0; r<Board.fRows; r++) {
-            for (int c = 0; c < Board.fCols; c++) {
+        for (int r=0; r<this.game.b.fRows; r++) {
+            for (int c = 0; c < this.game.b.fCols; c++) {
                 Piece v = this.game.b.getPiece( r, c );
                 if (v == null)    continue;
                 if (this.piece[v.ordinal()] == null)    continue;
-                int tr = Board.fRows - r - 1;  //flip
+                int tr = this.game.b.fRows - r - 1;  //flip
                 g.draw( this.piece[v.ordinal()], c * size + xOff, tr * size + yOff, size, size );
             }
         }
@@ -254,7 +254,7 @@ public class MainView {
         //outline selected piece (if any)
         if (this.game.fromR != -1) {
             g.setColor( Color.YELLOW );
-            int tr = Board.fRows - this.game.fromR - 1;  //flip
+            int tr = this.game.b.fRows - this.game.fromR - 1;  //flip
             g.rect( this.game.fromC*size + xOff, tr*size + yOff, size, size );
         }
 
@@ -263,7 +263,7 @@ public class MainView {
             --this.game.frameCount;
             if (this.game.frameCount > 0) {
                 g.setColor( Color.ORANGE );
-                int tr = Board.fRows - this.game.toR - 1;  //flip
+                int tr = this.game.b.fRows - this.game.toR - 1;  //flip
                 g.rect( this.game.toC * size + xOff, tr * size + yOff, size, size );
             } else {
                 this.game.fromR = this.game.fromC = this.game.toR = this.game.toC = -1;
